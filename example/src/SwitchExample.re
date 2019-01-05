@@ -16,7 +16,7 @@ module Switch =
     let getScreen = (route, navigation) =>
       switch (route) {
       | Login => (<Login navigation />, screenOptions())
-      | LoggedIn => (<LoggedIn navigation />, screenOptions())
+      | LoggedIn => (<NestedStackExample externalNavigation=navigation />, screenOptions())
       };
   });
 

@@ -11,22 +11,25 @@ module Styles = {
     ]);
 };
 
-let component = ReasonReact.statelessComponent("App");
+let component = ReasonReact.statelessComponent("Home");
 
 let make =
-    (~navigation: Config.navigationProp, ~text: string="Hi!", _children) => {
+    (
+      ~navigation: Config.navigationProp,
+      ~loginNavigation: Config.loginNavigation,
+      _children,
+    ) => {
   ...component,
   render: _self =>
     <SafeAreaView>
       <View style=Styles.container>
-        <Text> {ReasonReact.string(text)} </Text>
         <Button
           title="Go to details screen "
           onPress={() => navigation.push(UserDetails("Mike Grabowski"))}
         />
-        <Button 
-          title="Go to tab example"
-          onPress={() => navigation.push(TabExample)}
+        <Button
+          title="Log out"
+          onPress={() => loginNavigation.navigate(Login)}
         />
       </View>
     </SafeAreaView>,
